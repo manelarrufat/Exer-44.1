@@ -30,3 +30,23 @@ function first_example_block_view($delta = '') {
   }
   return $block;
 }
+
+/**
+ * Implements hook_help().
+ */
+function first_example_help($path, $arg) {
+  switch ($path) {
+    // Main module help for the block module
+    case 'admin/help#first_example':
+      return '<p>' . t('This module shows a welcome message into a 
+              block.') . '</p>';
+    case 'admin/structure/block':
+      return '<p>' . t('Use the block Welcome block to show a 
+              welcome message.') . '</p>';
+    case 'user/%':
+      if ($arg[1]==1){
+        return '<p>' . t('Activating the module First example, the users
+               of the site will receive a message of welcome') . '</p>';
+      }
+  }
+}
