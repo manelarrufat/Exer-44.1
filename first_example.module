@@ -1,0 +1,32 @@
+<?php
+/**
+* @file
+* Módulo de ejemplo
+* Este módulo presenta un mensaje de bienvenida al usuario en un bloque.
+*/
+
+/**
+ * Implements hook_block_info().
+ */
+function first_example_block_info() {
+  // This example comes from node.module.
+  $blocks['welcome'] = array(
+    'info' => t('My first module: welcome block'),
+    'cache' => DRUPAL_NO_CACHE
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function first_example_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'welcome':
+      $block['subject'] = t('My first module');
+      $block['content'] = t('Welcome to my Drupal site.');
+      break;
+  }
+  return $block;
+}
